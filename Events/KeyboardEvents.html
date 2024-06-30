@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Events</title>
+</head>
+<body>
+    
+    <div class="container">
+
+        <input type="text" id="myText" placeholder="Type Something...">
+
+        <div class="output">
+            <p class="keyPressed">Key Pressed:</p>
+            <p class="keyCode">Key Code: </p>
+            <p class="charCode">Char codeAt:</p>
+            <p class="eventType">Event types:</p>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Taking the references of the each class inside class output of the div tag
+        let keyPressed = document.querySelector(".keyPressed");
+
+        let keyCode = document.querySelector(".keyCode");
+
+        let charCode = document.querySelector(".charCode");
+
+        let eventType = document.querySelector(".eventType");
+
+        let myText = document.getElementById("myText");
+
+        const pressedKey = (event)=>{
+
+            console.log(event); // this event variable will give all the information related to keydown event of keyboard
+
+            // console.log("Key Pressed:" +event.key);
+            // console.log("Key Code:" +event.code);
+            // console.log("Key Type:" +event.type);
+
+            keyPressed.innerHTML = `Key Pressed: ${event.key}`;
+
+            keyCode.innerHTML = `Key Code: ${event.keyCode}`;
+
+            charCode.innerHTML = `Char codeAt: ${event.charCode}`;
+
+            eventType.innerHTML = `Event type: ${event.type}`;
+        };
+
+        // Basically there are only 2 events of keyboard --> keydown and keyup
+
+        // Adding event listeners
+        myText.addEventListener("keydown",pressedKey);
+
+        // myText.addEventListener("keyup",pressedKey);
+    </script>
+
+</body>
+</html>

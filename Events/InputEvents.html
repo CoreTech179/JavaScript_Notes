@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input feild Events</title>
+</head>
+<body>
+    
+    <div>
+        
+        <input type="text" id="myInput" name="userName" placeholder="Enter something..">
+
+        <div class="output">
+            <p class="inputValue">Input Value:</p>
+            <p class="inputName">Input Name:</p>
+            <p class="inputType">Input Type:</p>
+            <p class="eventType">Event Type:</p>
+        </div>
+
+    </div>
+
+    <script>
+
+        let myInput = document.getElementById("myInput");
+
+        let inputValue = document.querySelector(".inputValue");
+
+        let inputName = document.querySelector(".inputName");
+
+        let inputType = document.querySelector(".inputType");
+
+        let eventType = document.querySelector(".eventType");
+
+
+        const handleInput = (event)=>{
+            console.log(event);
+
+            inputValue.innerHTML = `Input Value: ${event.data}`;
+            inputType.innerHTML = `Input Type: ${event.inputType}`;
+            eventType.innerHTML = `Input Type: ${event.type}`;
+            inputName.innerHTML = `Input Name: ${event.target.name}`; // where name is a attribute of the input feild defined already
+        };
+
+        myInput.addEventListener('input',handleInput);
+
+    </script>
+
+</body>
+</html>

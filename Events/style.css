@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+    box-sizing: border-box;
+}
+
+h1{
+    color: yellow;
+}
+
+button{
+    background-color: gold;
+    width: 8rem;
+    font-family: sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    height: 2.3rem;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: chartreuse;
+}

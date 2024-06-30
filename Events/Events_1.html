@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listeners</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1>Inline Event</h1>
+
+    <button onclick="alert('Welcome')">Greetings</button>
+
+    <button ondblclick="alert('Welcome to JavaScript')">Greetings Again</button>
+
+    <button onmouseover="alert('Welcome to JavaScript on mouseOverEvent')">Greetings Again</button>
+
+    <h1>Using DOM Event Handler</h1>
+
+    <button id="myBtn">Greetings</button>
+
+    <button id="myBtn1">Greetings Again</button>
+
+
+    <h1>addEventListener Event Handler</h1>
+
+    <button id="myBtn2">Greetings</button>
+
+    <button id="myBtn3">Greetings Again</button>
+
+    <script>
+
+        // New Method
+
+        // document.getElementById('myBtn').onclick = () =>{
+        //     alert("Welcome to DOM Event Handler");
+        // }
+
+        // Traditional Method
+
+        document.getElementById('myBtn').onclick = function(){
+            alert("Welcoem to DOM Event Handler by Tradtitional Method");
+        }
+
+        // Traditional
+
+        // document.getElementById('myBtn1').onclick = function(){
+        //     alert("Welcoem to DOM Event Handler on 2nd Button by Tradtitional Method");
+        // }
+
+        // New Method
+
+        document.getElementById('myBtn1').onclick = () => {
+            alert("Welcoem to DOM Event Handler on 2nd Button by Fat Arrow function");
+        }
+
+
+        // addEventListner
+
+        // Traditional Method
+
+        // document.getElementById('myBtn2').addEventListener('click',function(){
+        //     alert("Welcome to addEventListner Event handler by traditional function Method");
+        // });
+
+
+        // By Fat Arrow Function
+
+        document.getElementById('myBtn2').addEventListener('click',() => {
+            alert("Welcome to addEventListner Event handler by fat Arrow function Method");
+        });
+
+
+        // Traditional Method
+
+        // document.getElementById('myBtn3').addEventListener('click',function() {
+        //     alert("Welcome to addEventListner Event handler by Traditional function Method");
+        // });
+
+        // Fat Arrow Function
+
+        document.getElementById('myBtn3').addEventListener('click',() => {
+            alert("Welcome to addEventListner Event handler by Fat Arrow function Method");
+        });
+
+
+
+    </script>
+
+</body>
+</html>

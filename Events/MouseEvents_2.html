@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events</title>
+    <style>
+
+        body{
+            background-color: rgb(30, 28, 28);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 97.8vh;
+        }
+
+        .rectangle{
+            height: 10rem;
+            width: 10rem;
+            border: 2px solid yellow;
+            margin: 1rem;
+        }
+
+        #myBtn{
+            border: 2px solid greenyellow;
+        }
+
+        button{
+            width: 5rem;
+            background-color: yellow;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+
+        .addTransition1{
+            border-radius: 10rem;
+            background-color: green;
+        }
+
+        .addTransition2{
+            background-color: chartreuse;
+            translate: 30rem 0rem;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="rectangle"></div>
+    <button id="myBtn">click me</button>
+
+    
+    <script>
+
+        let rectangleDiv = document.querySelector(".rectangle"); // Taking reference of the class rectangle div tag
+
+        let button1 = document.getElementById("myBtn"); // Taking reference of the button tag by its id
+
+        const changeBackgroundColor = ()=>{
+
+            console.log("click");
+
+            // Changing the background color using dom properties
+            rectangleDiv.style.backgroundColor = "yellow";
+
+        };
+
+        const changeOrientation = ()=>{
+
+            console.log("double click");
+
+            // Basically here we are adding a class to the rectangle div dynamically using js. Since the css for newly added class is aready declared therfore upon double click the css is fired immediately
+            rectangleDiv.classList.add("addTransition1");
+
+        };
+
+        const changeOrientation2 = ()=>{
+
+            console.log("mouse out event");
+            rectangleDiv.classList.add("addTransition2");
+
+        };
+
+
+
+        // with the corrosponding references we are adding the event listeners
+        button1.addEventListener("click",changeBackgroundColor);
+
+        rectangleDiv.addEventListener('dblclick',changeOrientation); // dblclick means double click
+
+        rectangleDiv.addEventListener('mouseout',changeOrientation2);
+    </script>
+
+</body>
+</html>
