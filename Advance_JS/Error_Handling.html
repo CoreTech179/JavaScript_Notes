@@ -1,0 +1,99 @@
+<!-- In JavaScript the try-catch statement is used for error handling. It allows you catch and handle exceptions (errors) that occurs within a block of code -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dad Jokes By Async Wait function </title>
+    <style>
+
+        body{
+            background-color: rgb(60, 58, 58);
+            box-sizing: border-box;
+            height: 97vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container{
+            /* border: 2px solid gold; */
+            height: 30rem;
+            width: 85rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1{
+            color: white;
+        }
+
+        button{
+            height: 2rem;
+            width: 8rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: rgb(0, 255, 0);
+        }
+
+        .apiBody{
+            font-size: 1.5rem;
+            font-family: monospace;
+            color: gold;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1>Hi Welcome to Dad Jokes!</h1>
+
+    <div class="container">
+
+        <section class="apiBody"></section>
+        <br>
+
+        <Button id="fetchJokes">Get another Joke</Button>
+
+    </div>
+
+    <script>
+        
+        const apiBody = document.querySelector(".apiBody");
+
+        const apiURL = "https://icanhazdadjoke.com/";
+
+        // async function fetchData(){
+        const fetchData = async () =>{
+
+            try {
+                const response = await fetch(apiURL,{
+                    headers:{
+                        Accept: "application/json",
+                    },
+                }); 
+    
+                const data = await response.json(); 
+                // console.log(data.joke); // Verify whether response is obtaining or not
+                apiBody.innerHTML = data.joke;
+                
+            } catch (error) {
+                apiBody.innerHTML = error;
+                console.log(error);
+            }
+        }
+
+        fetchData();
+
+        document.getElementById('fetchJokes').addEventListener('click',fetchData);
+    </script>
+
+</body>
+</html>

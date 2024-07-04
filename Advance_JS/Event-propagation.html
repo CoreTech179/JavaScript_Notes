@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            height: 97vh;
+        }
+        #outer{
+            height: 25rem;
+            width: 25rem;
+            border: 2px solid gold;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        #outer:hover{
+            background-color: blueviolet;
+            cursor: pointer;
+        }
+
+        #middle{
+            height: 15rem;
+            width: 15rem;
+            border:2px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 35px;
+        }
+
+        #middle:hover{
+            background-color: brown;
+            cursor: pointer;
+        }
+
+        #inner{
+            height: 10rem;
+            width: 10rem;
+            border: 2px solid greenyellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inner:hover{
+            background-color: darkorange;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        outer
+        <div id="middle">
+            middle
+            <div id="inner">Inner</div>
+        </div>
+    </div>
+
+    <script>
+
+        const callOuter = (event)=>{
+
+            console.table([{
+
+                Desciption: "I am Outer One",
+                Target: event.target,
+                CurrentTarget: event.currentTarget
+
+            },]);
+
+        };
+
+
+        const callMiddle = ()=>{
+
+            console.table([{
+                Desciption: "I am Middle One",
+                Target: event.target,
+                CurrentTarget: event.currentTarget
+            }]);
+
+        };
+
+        const callInner = ()=>{
+
+            console.table([{
+                Desciption: "I am Inner One",
+                Target: event.target,
+                CurrentTarget: event.currentTarget
+            }]);
+            
+            // To stop this event to propagate in upward direction we use event.stopPropagation()
+
+            // event.stopPropagation();
+        };
+
+        // By default is bubbling phase
+
+        // document.getElementById("outer").addEventListener('click',callOuter);
+        // document.getElementById("middle").addEventListener('click',callMiddle);
+        // document.getElementById("inner").addEventListener('click',callInner);
+
+
+
+        // To acheive capturing phase we can use the third parameter of the addEventListener method which specifies whether the event should be captured during the capturing phase or not. Setting it to "true" will activate the capturing phase.
+
+
+        document.getElementById("outer").addEventListener('click',callOuter,true);
+        document.getElementById("middle").addEventListener('click',callMiddle,true);
+        document.getElementById("inner").addEventListener('click',callInner,true);
+
+    </script>
+</body>
+</html>

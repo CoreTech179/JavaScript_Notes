@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Dad Jokes</title>
+    <style>
+        body{
+            background-color: rgb(60, 58, 58);
+            box-sizing: border-box;
+            height: 97vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container{
+            /* border: 2px solid gold; */
+            height: 30rem;
+            width: 85rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1{
+            color: white;
+        }
+
+        button{
+            height: 2rem;
+            width: 8rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: rgb(0, 255, 0);
+        }
+
+        .apiBody{
+            font-size: 2rem;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hi Welcome to Dad Jokes!</h1>
+
+    <div class="container">
+
+        <section class="apiBody"></section>
+        <br>
+
+        <Button id="fetchJokes">Get another Joke</Button>
+
+    </div>
+
+    <script>
+
+        const apiBody = document.querySelector(".apiBody");
+
+        const apiURL = "https://icanhazdadjoke.com/";
+
+        const fetchData = ()=>{
+
+            fetch(apiURL,{
+                headers:{
+                    Accept: "application/json", // Basically this header with peoperty accept says that please understand this in the json format
+                },
+            }).then((response)=>{
+
+                console.log(response);
+
+                return response.json(); // basically when you made a request through fetch() function the response contains data in the form of a JSON string. The .json() method is used to asynchronously pase the JSON string into a js object format.
+
+            }).then((getData)=>{
+
+                // console.log(getData.joke);
+                apiBody.innerHTML = getData.joke;
+
+                apiBody.style.color = "gold";
+
+            }).catch((error)=>{
+
+                console.log(error);
+
+            });
+
+        };
+
+        fetchData(); // This is because when someone is loading the page for the first time a joke should appear.
+
+        document.getElementById('fetchJokes').addEventListener('click',fetchData);
+
+    </script>
+</body>
+</html>

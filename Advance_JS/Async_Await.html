@@ -1,0 +1,96 @@
+<!-- Async and await are javaScript keywords whcih is introduced in ES8 that make asynchronous code look and behave more like synchronous code by making it easier to write, read and read about asynchronous operations -->
+
+<!-- Async function Declaration: The async keyword is used to declare an asynchronous function. A async function will return a promise implicityly even if the return value is not explicitly wrapped in a Promise. Inside an Async function you can use await keyword to pause the execution of a code until a Promise is resolved or rejected -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dad Jokes By Async Wait function </title>
+    <style>
+
+        body{
+            background-color: rgb(60, 58, 58);
+            box-sizing: border-box;
+            height: 97vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container{
+            /* border: 2px solid gold; */
+            height: 30rem;
+            width: 85rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1{
+            color: white;
+        }
+
+        button{
+            height: 2rem;
+            width: 8rem;
+            border-radius: 0.8rem;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: rgb(0, 255, 0);
+        }
+
+        .apiBody{
+            font-size: 1.5rem;
+            font-family: monospace;
+            color: gold;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1>Hi Welcome to Dad Jokes!</h1>
+
+    <div class="container">
+
+        <section class="apiBody"></section>
+        <br>
+
+        <Button id="fetchJokes">Get another Joke</Button>
+
+    </div>
+
+    <script>
+        
+        const apiBody = document.querySelector(".apiBody");
+
+        const apiURL = "https://icanhazdadjoke.com/";
+
+        async function fetchData(){
+            const response = await fetch(apiURL,{
+                headers:{
+                    Accept: "application/json",
+                },
+            }); // Here await keyword means it will wait until and unless the data is received from the url and once the data is received it will pass that particular data to the variable response. 
+            // console.log(response);
+
+            const data = await response.json(); // Here the data is in the string format therefore to convert it to original object format we use .json() method. 
+            // Basically await here says that wait for few seconds and as sson as the data is received assign that data to the variable.
+
+            // console.log(data.joke); // Verify whether response is obtaining or not
+            apiBody.innerHTML = data.joke;
+        }
+
+        fetchData();
+
+        document.getElementById('fetchJokes').addEventListener('click',fetchData);
+    </script>
+
+</body>
+</html>
